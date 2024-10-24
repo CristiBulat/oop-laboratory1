@@ -24,20 +24,19 @@ public class Main {
     });
 
     for (Individual individual : individualsList) {
-      JsonNode jsonNode = mapper.valueToTree(individual);
+
       switch (Classification.getClassification(individual)) {
         case 1:
-
-          starWars.individuals().add(jsonNode);
+          starWars.individuals().add(individual);
           break;
         case 2:
-          marvel.individuals().add(jsonNode);
+          marvel.individuals().add(individual);
           break;
         case 3:
-          hitchhikers.individuals().add(jsonNode);
+          hitchhikers.individuals().add(individual);
           break;
         case 4:
-          rings.individuals().add(jsonNode);
+          rings.individuals().add(individual);
           break;
         default:
           System.out.println("Something went wrong for id: " + individual.getId());
@@ -63,5 +62,5 @@ public class Main {
 
 record Universe(
         String name,
-        List<JsonNode> individuals
+        List<Individual> individuals
 ) { }
