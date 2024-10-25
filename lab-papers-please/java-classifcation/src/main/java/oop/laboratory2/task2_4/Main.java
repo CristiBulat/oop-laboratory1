@@ -7,21 +7,26 @@ public class Main {
             return;
         }
 
-        String filePath = args[0];
-        Counter counter = new Counter();
+        for (String filePath : args) {
+            System.out.println("Reading file: " + filePath);
 
-        FileReader fileReader = new FileReader();
-        String fileData = fileReader.readFileIntoString(filePath);
+            Counter counter = new Counter();
 
-        TextData data = new TextData(filePath, fileData, counter.countVowels(fileData), counter.countConsonants(fileData), counter.countLetters(fileData), counter.countSentences(fileData), counter.findLongestWord(fileData));
+            FileReader fileReader = new FileReader();
+            String fileData = fileReader.readFileIntoString(filePath);
 
-        System.out.println("File Name: " + data.getFileName());
-        System.out.println("Number of Vowels: " + data.getNumberOfVowels());
-        System.out.println("Number of Consonants: " + data.getNumberOfConsonants());
-        System.out.println("Number of Letters: " + data.getNumberOfLetters());
-        System.out.println("Number of Sentences: " + data.getNumberOfsentences());
-        System.out.println("Longest Word: " + data.getLongestWord());
-        System.out.println();
-        System.out.println("Text: " + data.getText());
+            TextData data = new TextData(filePath, fileData, counter.countVowels(fileData), counter.countConsonants(fileData), counter.countLetters(fileData), counter.countSentences(fileData), counter.findLongestWord(fileData));
+
+            System.out.println("File Name: " + data.getFileName());
+            System.out.println("Number of Vowels: " + data.getNumberOfVowels());
+            System.out.println("Number of Consonants: " + data.getNumberOfConsonants());
+            System.out.println("Number of Letters: " + data.getNumberOfLetters());
+            System.out.println("Number of Sentences: " + data.getNumberOfsentences());
+            System.out.println("Longest Word: " + data.getLongestWord());
+            System.out.println();
+            System.out.println("Text: " + data.getText());
+
+            System.out.println("----------------------------------------------------------------------- ");
+        }
     }
 }
