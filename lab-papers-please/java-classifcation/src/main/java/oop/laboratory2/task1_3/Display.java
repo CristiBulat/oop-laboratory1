@@ -1,21 +1,25 @@
 package oop.laboratory2.task1_3;
 
 public class Display {
-    private int width;
-    private int height;
+    private double width;
+    private double height;
     private float ppi;
     private String model;
 
-    public Display( int width, int height, float ppi, String model) {
+    public Display( double width, double height, float ppi, String model) {
         this.width = width;
         this.height = height;
         this.ppi = ppi;
         this.model = model;
     }
 
+    public String getModel() {
+        return model;
+    }
+
     public void compareSize(Display m) {
-        int thisSize = this.width * this.height;
-        int otherSize = m.width * m.height;
+        double thisSize = this.width * this.height;
+        double otherSize = m.width * m.height;
 
         if (thisSize > otherSize) {
             System.out.println("Display " + this.model + " is of a bigger size than Display " + m.model);
@@ -40,5 +44,36 @@ public class Display {
         System.out.println("Comparing sharpness and shape of Display " + this.model + " and the Display " + m.model + ":");
         compareSize(m);
         compareSharpness(m);
+        System.out.println("--------------------------------");
+    }
+
+    public Display betterDisplay(Display m) {
+        double sizeWeight = 0.7;
+        double sharpnessWeight = 0.3;
+        double score1 = (this.height * this.width * sizeWeight) + (this.ppi * sharpnessWeight);
+        double score2 = (m.height * m.width * sizeWeight) + (m.ppi * sharpnessWeight);
+
+        if(score1 > score2) {
+            return this;
+        }
+        else{
+            return m;
+        }
+    }
+
+    public double recommendation(Display m){
+        double sizeWeight = 0.7;
+        double sharpnessWeight = 0.3;
+
+        double score = Math.abs((this.height*this.width - m.height*m.width)*sizeWeight + (this.ppi - m.ppi)*sharpnessWeight);
+
+        return score;
+    }
+
+    @Override
+    public String toString() {
+        return "Display: " + this.model +
+                ", Size: " + this.width + " x " + this.height +
+                ", Sharpness(PPI): " + this.ppi;
     }
 }
