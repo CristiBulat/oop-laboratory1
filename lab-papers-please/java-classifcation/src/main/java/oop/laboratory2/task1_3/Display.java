@@ -1,4 +1,4 @@
-package oop.laboratory2;
+package oop.laboratory2.task1_3;
 
 public class Display {
     private int width;

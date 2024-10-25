@@ -1,6 +1,6 @@
-package oop.laboratory2;
+package oop.laboratory2.task1_3;
 
-public class Main_lab2 {
+public class Main {
     public static void main(String[] args) {
         Display display1 = new Display(1920, 1080, 300, "Display 1");
         Display display2 = new Display(2560, 1440, 320, "Display 2");
